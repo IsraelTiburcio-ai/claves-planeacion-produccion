@@ -81,7 +81,13 @@ body {
 
 /* ---------- Pantallas ---------- */
 .screen { display: none; flex: 1; min-height: 0; flex-direction: column; }
-.screen.active { display: flex; animation: screenIn .28s ease both; }
+.screen.active {
+  display: flex;
+  animation: screenIn .28s ease both;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
 @keyframes screenIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
 .kicker {
@@ -441,7 +447,7 @@ h1 {
 @keyframes pop { from { transform: scale(.3); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 #screen-result .subtitle { margin-top: 4px; }
 
-#screen-result { overflow-y: auto; min-height: 0; padding-bottom: 10px; }
+#screen-result { padding-bottom: 10px; }
 
 .btn-answers {
   width: 100%;
@@ -575,4 +581,18 @@ h1 {
   .cards { grid-template-columns: 1fr; }
   .card { min-height: 52px; }
   .question { font-size: 15.5px; }
+}
+
+/* ---------- Pantallas cortas (celulares con barra del navegador) ---------- */
+@media (max-height: 700px) {
+  #screen-final { gap: 4px; }
+  .chip-final { margin-top: 0; }
+  #screen-final .screen-title { margin-top: 0; }
+  .hub-wrap { max-width: 225px; margin-top: 2px; }
+  .instruction { margin-top: 2px; font-size: 12.5px; }
+  .cards { gap: 6px; margin-top: 6px; }
+  .card { min-height: 58px; padding: 7px 9px; font-size: 11.5px; line-height: 1.25; }
+  .final-footer { padding-top: 6px; }
+  .factory svg, .start-factory svg { max-height: 92px; }
+  .start-steps { gap: 6px; }
 }
