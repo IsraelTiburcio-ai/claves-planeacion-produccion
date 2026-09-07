@@ -441,25 +441,70 @@ h1 {
 @keyframes pop { from { transform: scale(.3); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 #screen-result .subtitle { margin-top: 4px; }
 
-.clave-list {
-  list-style: none;
-  margin: 8px auto 0;
+#screen-result { overflow-y: auto; min-height: 0; padding-bottom: 10px; }
+
+.btn-answers {
   width: 100%;
-  display: grid; gap: 7px;
+  margin-top: 10px;
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+  padding: 12px 16px;
+  background: color-mix(in srgb, var(--amber) 9%, transparent);
+  border: 1.5px dashed color-mix(in srgb, var(--amber) 60%, transparent);
+  border-radius: 14px;
+  color: var(--amber);
+  font-family: inherit; font-weight: 800; font-size: 14px;
+  letter-spacing: .08em;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease;
 }
-.clave-list li {
-  display: flex; align-items: center; gap: 10px;
+.btn-answers:hover { background: color-mix(in srgb, var(--amber) 17%, transparent); border-color: var(--amber); }
+.btn-answers:active { transform: scale(.98); }
+.btn-answers[aria-expanded="true"] { border-style: solid; }
+
+.answers-panel {
+  margin-top: 8px;
   background: var(--panel);
   border: 1px solid var(--line);
-  border-left: 4px solid var(--c, var(--green));
-  border-radius: 12px;
-  padding: 9px 11px;
-  font-size: 13px; font-weight: 600;
-  line-height: 1.3;
-  animation: cardIn .4s ease both;
-  animation-delay: calc(var(--i) * 90ms + 150ms);
+  border-radius: 14px;
+  padding: 10px 12px 12px;
+  display: grid; gap: 8px;
+  animation: cardIn .3s ease both;
 }
-.clave-list .check { color: var(--c, var(--green)); font-weight: 800; font-size: 15px; flex: 0 0 auto; }
+.answers-panel[hidden] { display: none; }
+.answers-hint {
+  font-family: var(--mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: .14em;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 2px;
+}
+.answers-list {
+  list-style: none; counter-reset: none;
+  margin: 0; padding: 0;
+  display: grid; gap: 6px;
+}
+.answers-list li {
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: 14px; font-weight: 700; line-height: 1.35;
+  padding: 9px 11px;
+  background: color-mix(in srgb, var(--c, var(--green)) 7%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c, var(--green)) 30%, transparent);
+  border-left: 4px solid var(--c, var(--green));
+  border-radius: 10px;
+  animation: cardIn .4s ease both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+.answers-list .num {
+  width: 24px; height: 24px; flex: 0 0 auto;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--c, var(--green)) 18%, transparent);
+  border: 1px solid var(--c, var(--green));
+  color: var(--c, var(--green));
+  font-family: var(--mono);
+  font-weight: 800; font-size: 13px;
+  display: grid; place-items: center;
+}
 
 .stats {
   margin: 10px auto 0;

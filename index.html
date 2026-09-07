@@ -107,7 +107,18 @@
         <svg id="hub2-svg" viewBox="0 0 320 148"></svg>
       </div>
 
-      <ul class="clave-list" id="clave-list" aria-label="Las 5 claves"></ul>
+      <button id="btn-answers" class="btn-answers" aria-expanded="false" aria-controls="answers-panel">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M12 5c5 0 9 4.6 10 7-1 2.4-5 7-10 7S3 14.4 2 12c1-2.4 5-7 10-7Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="12" cy="12" r="3" fill="currentColor"/>
+        </svg>
+        <span class="btn-answers-label">VER RESPUESTAS</span>
+      </button>
+
+      <div id="answers-panel" class="answers-panel" hidden>
+        <p class="answers-hint">ANOTA LAS 5 RESPUESTAS</p>
+        <ol class="answers-list" id="answers-list"></ol>
+      </div>
 
       <div class="stats" id="stats" aria-label="Estadísticas de la partida"></div>
 

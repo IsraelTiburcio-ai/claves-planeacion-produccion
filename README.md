@@ -37,7 +37,7 @@ Después de las 5 estaciones:
 
 - **Reto final "COMPLETA EL CUADRO":** 8 tarjetas (las 5 correctas + 3 distractores plausibles). El alumno debe seleccionar exactamente las 5 correctas.
 
-La partida termina en la pantalla **¡Planeación completada!** con el cuadro de las 5 claves ✓, tiempo de juego y botones **VOLVER A JUGAR** y **REPASAR LAS 5 CLAVES**.
+La partida termina en la pantalla **¡Planeación completada!** con el cuadro de las 5 claves ✓, tiempo de juego, el botón **VER RESPUESTAS** (despliega las 5 respuestas numeradas para que el alumno las anote) y los botones **VOLVER A JUGAR** y **REPASAR LAS 5 CLAVES**.
 
 ## Banco de preguntas
 

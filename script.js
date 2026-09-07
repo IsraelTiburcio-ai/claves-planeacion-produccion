@@ -433,15 +433,16 @@ function mostrarResultado() {
   buildHub($("#hub2-svg"), "res");
   lightHub($("#hub2-svg"), 4);
 
-  const ul = $("#clave-list");
-  ul.innerHTML = "";
+  const ol = $("#answers-list");
+  ol.innerHTML = "";
   CLAVES_EXACTAS.forEach((t, i) => {
     const li = document.createElement("li");
     li.style.setProperty("--c", GRUPOS[i].color);
     li.style.setProperty("--i", i);
-    li.innerHTML = `<span class="check" aria-hidden="true">✓</span><span>${t}</span>`;
-    ul.appendChild(li);
+    li.innerHTML = `<span class="num" aria-hidden="true">${i + 1}</span><span>${t}</span>`;
+    ol.appendChild(li);
   });
+  cerrarRespuestas();
 
   const primerIntento = 5 - state.fallosPrimerIntento;
   $("#stats").innerHTML = `
@@ -449,6 +450,22 @@ function mostrarResultado() {
     <span class="stat">Estaciones al primer intento: <b>${primerIntento}/5</b></span>`;
 
   mostrarPantalla("result");
+}
+
+/* ---------- Botón VER RESPUESTAS ---------- */
+function cerrarRespuestas() {
+  $("#answers-panel").hidden = true;
+  $("#btn-answers").setAttribute("aria-expanded", "false");
+  $("#btn-answers .btn-answers-label").textContent = "VER RESPUESTAS";
+}
+function toggleRespuestas() {
+  const panel = $("#answers-panel");
+  const abrir = panel.hidden;
+  FX.tap();
+  panel.hidden = !abrir;
+  $("#btn-answers").setAttribute("aria-expanded", abrir ? "true" : "false");
+  $("#btn-answers .btn-answers-label").textContent = abrir ? "OCULTAR RESPUESTAS" : "VER RESPUESTAS";
+  if (abrir) panel.scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "nearest" });
 }
 
 /* ---------- Repaso ---------- */
@@ -484,6 +501,7 @@ $("#btn-replay").addEventListener("click", () => { FX.tap(); nuevaPartida(); });
 $("#btn-check").addEventListener("click", () => { FX.tap(); comprobarCuadro(); });
 $("#btn-review-start").addEventListener("click", () => { FX.tap(); abrirRepaso("start"); });
 $("#btn-review-result").addEventListener("click", () => { FX.tap(); abrirRepaso("result"); });
+$("#btn-answers").addEventListener("click", toggleRespuestas);
 $("#btn-review-back").addEventListener("click", () => {
   FX.tap();
   mostrarPantalla(reviewOrigin === "result" ? "result" : "start");
