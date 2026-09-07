@@ -369,7 +369,7 @@ h1 {
 
 .hub-wrap { width: 100%; max-width: 330px; margin: 6px auto 0; flex: 0 0 auto; }
 .hub-wrap svg { width: 100%; height: auto; display: block; }
-.hub-box { fill: url(#hubGrad); }
+.hub-box { stroke: #c97f10; stroke-width: 1.5; }
 .hub-spoke { stroke: #334064; stroke-width: 2; transition: stroke .4s; }
 .hub-dot { fill: #39456b; stroke: var(--line); stroke-width: 2; transition: fill .4s, filter .4s; }
 .hub-dot.lit { fill: var(--c); filter: drop-shadow(0 0 6px var(--c)); }
