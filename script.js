@@ -26,7 +26,8 @@ const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 /* ---------- Audio (WebAudio, sin archivos) ---------- */
 const FX = (() => {
   let ctx = null;
-  let muted = localStorage.getItem("claves-mute") === "1";
+  let muted = false;
+  try { muted = localStorage.getItem("claves-mute") === "1"; } catch (_) { /* optional storage */ }
   const ensure = () => {
     if (!ctx) {
       const AC = window.AudioContext || window.webkitAudioContext;
@@ -69,7 +70,7 @@ const FX = (() => {
     get muted() { return muted; },
     toggle() {
       muted = !muted;
-      localStorage.setItem("claves-mute", muted ? "1" : "0");
+      try { localStorage.setItem("claves-mute", muted ? "1" : "0"); } catch (_) { /* keep session preference */ }
       return muted;
     }
   };
