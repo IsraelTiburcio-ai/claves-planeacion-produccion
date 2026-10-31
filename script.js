@@ -3,6 +3,7 @@
    Lógica del juego: estaciones, reto final, audio y accesibilidad.
    ============================================================ */
 "use strict";
+const optilabResults = window.OptiLabResults?.create('claves-planeacion-produccion');
 
 /* ---------- Utilidades ---------- */
 const $ = (sel) => document.querySelector(sel);
@@ -236,6 +237,7 @@ function buildRail(current, doneCount) {
 
 /* ---------- Partida ---------- */
 function nuevaPartida() {
+  optilabResults?.start();
   state.partida = GRUPOS.map((g) => {
     const preg = g.preguntas[Math.floor(Math.random() * g.preguntas.length)];
     const orden = shuffle([0, 1, 2]);
@@ -446,6 +448,7 @@ function mostrarResultado() {
   cerrarRespuestas();
 
   const primerIntento = 5 - state.fallosPrimerIntento;
+  optilabResults?.complete({reason:'completed',correct:primerIntento,total:5,durationMs:seg*1000});
   $("#stats").innerHTML = `
     <span class="stat">⏱ <b>${seg}s</b></span>
     <span class="stat">Estaciones al primer intento: <b>${primerIntento}/5</b></span>`;
